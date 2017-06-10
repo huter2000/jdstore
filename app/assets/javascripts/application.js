@@ -16,3 +16,14 @@
 //= require bootstrap/alert
 //= require_tree .
 //= require bootstrap/dropdown
+//= require bootstrap/carousel
+
+
+$(window).scroll(function () {
+  /*===== Welcome#index - 首页导览列变化 =====*/
+	if ($(this).scrollTop() > 125) {
+		$('#navbar').addClass('scroll_navbar')
+	} else {
+		$('#navbar').removeClass('scroll_navbar')
+	}
+})

@@ -1,19 +1,25 @@
 Rails.application.routes.draw do
-  root 'products#index'
+  root 'welcome#index'
+  get "/products/index" => "products#index"
+ get "/products/show" => "products#show"
   devise_for :users
   namespace :admin do
     resources :products
+    
     resources :orders do
       member do
-        get :cancel
-        put :ship
+         post :cancel
+        post :ship
         post :shipped
-        delete :return
+        post :return
       end
     end
   end
 
   resources :products do
+    collection do
+      get :search
+    end
     member do
       post :add_to_cart
     end
